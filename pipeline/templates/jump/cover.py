@@ -1,0 +1,17 @@
+import sys; sys.argv = ["x", "none"]
+exec(open("/home/claude/kb/jump/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 1.2
+field(c, t)
+earthball(c, 540, 760, 165, t)
+crowdrow(c, 1700, 11, t, 0.62, jump=1.0, seed=2)
+crowdrow(c, 1860, 9, t + 0.4, 0.78, jump=1.0, seed=5)
+guy(c, 540, 1900, 0.9, t, face=1, jacket=HOOD, scarf=False, mood="happy", armF=2.4, armB=-2.4)
+c.save(); c.identity_matrix(); rect(c, 0, 300, W, 120, (0.05, 0.05, 0.08)); c.restore()
+txt(c, "WHAT IF...", 540, 362, 78, WHITE)
+chip(c, "RED CAP EXPLAINS", RED, 500, 1, 52)
+c.save(); c.identity_matrix(); c.set_source_rgba(0,0,0,0.42); c.rectangle(0, 980, W, 330); c.fill(); c.restore()
+txt(c, "EVERYONE", 540, 1070, 132, WHITE, stroke=16)
+txt(c, "JUMPED", 540, 1190, 132, GOLD, stroke=16)
+txt(c, "AT ONCE?", 540, 1300, 120, GOLD, stroke=16)
+surf.write_to_png("/home/claude/kb/jump/cover.png")

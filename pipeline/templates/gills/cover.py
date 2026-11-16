@@ -1,0 +1,12 @@
+import sys; sys.argv=["x","none"]
+exec(open("/home/claude/kb/gills/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 3.3; sea(c, t, 260, cam=0.15); seabed(c, t); school(c, t, 300, 5)
+for k, x in enumerate((90, 200, 900, 1000)): kelp(c, x, 1720, 430 + 80 * (k % 2), t, k0=k)
+dome(c, 250, 1700, 210, t); dome(c, 850, 1700, 230, t)
+stand(c, 540, 1330, 1.55, t, gills=1, big=0.9, mood="happy", armF=0.9, armB=-0.9); breath(c, 640, 760, t, 5)
+c.save(); c.identity_matrix(); c.set_source_rgba(0.05, 0.05, 0.08, 1); c.rectangle(0, 300, W, 120); c.fill(); c.restore()
+txt(c, "WHAT IF...", 540, 362, 78, WHITE)
+chip(c, "RED CAP EXPLAINS", RED, 500, 1, 52)
+txt(c, "WE COULD", 540, 1430, 140, WHITE, stroke=16); txt(c, "BREATHE", 540, 1575, 140, GOLD, stroke=16); txt(c, "UNDERWATER?", 540, 1715, 128, GOLD, stroke=16)
+surf.write_to_png("/home/claude/kb/gills/cover.png")

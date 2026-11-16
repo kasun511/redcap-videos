@@ -1,0 +1,17 @@
+import sys; sys.argv = ["x", "none"]
+exec(open("/home/claude/kb/window/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 1.2
+highsky(c, t)
+pane(c, 300, 820, 0.78, square=False, t=t, label="ROUND")
+pane(c, 780, 820, 0.78, square=True, t=t, hot=1.0, label="SQUARE")
+cross(c, 780, 820, 92, RED, 20, 1.0)
+guy(c, 540, 1950, 0.78, t, face=1, mood="happy", armF=0.6)
+c.save(); c.identity_matrix(); rect(c, 0, 300, W, 120, (0.05, 0.05, 0.08)); c.restore()
+txt(c, "RED CAP EXPLAINS", 540, 362, 66, WHITE)
+c.save(); c.identity_matrix(); c.set_source_rgba(0, 0, 0, 0.45); c.rectangle(0, 1240, W, 420); c.fill(); c.restore()
+txt(c, "WHY PLANE", 540, 1340, 118, WHITE, stroke=16)
+txt(c, "WINDOWS", 540, 1460, 118, GOLD, stroke=16)
+txt(c, "ARE ROUND", 540, 1580, 118, GOLD, stroke=16)
+shadow_rr(c, 170, 1690, 740, 76, 26, RED); txt(c, "The square ones killed people", 540, 1738, 38, WHITE)
+surf.write_to_png("/home/claude/kb/window/cover.png")

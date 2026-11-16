@@ -1,0 +1,18 @@
+import sys; sys.argv = ["x", "none"]
+exec(open("/home/claude/kb/fireshadow/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 1.2
+room(c, t, 0.62)
+wallpanel(c, 720, 360)
+lamp(c, 190, 1180, 0.8, t)
+beam(c, 236, 1020, 720, 400, 0.18)
+candle(c, 500, 1200, 1.05, t)
+c.save(); c.translate(900, 880); SS(c, 1.0)
+shadow_rr(c, -130, -62, 260, 124, 36, GREEN); txt(c, "NO", 0, -6, 56, WHITE); txt(c, "SHADOW", 0, 38, 30, WHITE); c.restore()
+c.save(); c.identity_matrix(); rect(c, 0, 300, W, 120, (0.05, 0.05, 0.08)); c.restore()
+txt(c, "RED CAP EXPLAINS", 540, 362, 66, WHITE)
+c.save(); c.identity_matrix(); c.set_source_rgba(0, 0, 0, 0.5); c.rectangle(0, 1340, W, 400); c.fill(); c.restore()
+txt(c, "FIRE HAS", 540, 1450, 132, WHITE, stroke=16)
+txt(c, "NO SHADOW", 540, 1580, 126, GOLD, stroke=16)
+shadow_rr(c, 215, 1660, 650, 72, 26, RED); txt(c, "Try it with a candle tonight", 540, 1706, 36, WHITE)
+surf.write_to_png("/home/claude/kb/fireshadow/cover.png")

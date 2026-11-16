@@ -1,0 +1,16 @@
+import sys; sys.argv = ["x", "none"]
+exec(open("/home/claude/kb/antarctica/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 1.0
+coldsky(c, t, 0.15)
+skyline(c, 1760, t)
+sealevel(c, 1180, t, 0.92)
+ruler(c, 960, 1760, 620, 1.0, t, 0.95, mark=58)
+icecap(c, 300, 1180, 0.62, t, 1.0, melt=0.45)
+c.save(); c.identity_matrix(); rect(c, 0, 300, W, 120, (0.05, 0.05, 0.08)); c.restore()
+txt(c, "RED CAP EXPLAINS", 540, 362, 66, WHITE)
+c.save(); c.identity_matrix(); c.set_source_rgba(0, 0, 0, 0.5); c.rectangle(0, 600, W, 360); c.fill(); c.restore()
+txt(c, "IF ANTARCTICA", 540, 700, 96, WHITE, stroke=14)
+txt(c, "MELTED", 540, 820, 126, GOLD, stroke=16)
+shadow_rr(c, 290, 870, 500, 76, 26, RED); txt(c, "+58 metres of sea", 540, 918, 38, WHITE)
+surf.write_to_png("/home/claude/kb/antarctica/cover.png")

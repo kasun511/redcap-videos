@@ -1,0 +1,15 @@
+import sys; sys.argv = ["x", "none"]
+exec(open("/home/claude/kb/anc/scenes.py").read().split('if __name__ == "__main__":')[0])
+surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); c = cairo.Context(surf)
+t = 1.0
+studio2(c)
+headphone(c, 540, 900, 1.45, t, on=1.0, mic=1.0)
+wave(c, 60, 1020, 1240, 120, 2.4, t, NOISEC, 1.0, 11)
+wave(c, 60, 1020, 1240, 120, 2.4, t, ANTIC, 1.0, 11, phase=math.pi)
+c.save(); c.identity_matrix(); rect(c, 0, 300, W, 120, (0.05, 0.05, 0.08)); c.restore()
+txt(c, "RED CAP EXPLAINS", 540, 362, 66, WHITE)
+c.save(); c.identity_matrix(); c.set_source_rgba(0, 0, 0, 0.5); c.rectangle(0, 1400, W, 400); c.fill(); c.restore()
+txt(c, "THEY DON'T", 540, 1510, 118, WHITE, stroke=16)
+txt(c, "BLOCK SOUND", 540, 1630, 112, GOLD, stroke=16)
+shadow_rr(c, 215, 1710, 650, 76, 26, RED); txt(c, "They add more of it", 540, 1758, 40, WHITE)
+surf.write_to_png("/home/claude/kb/anc/cover.png")
